@@ -3,7 +3,7 @@ import 'package:firebase_todo/domain/core/failures.dart';
 import 'package:firebase_todo/domain/core/value_object.dart';
 import 'package:firebase_todo/domain/core/value_validators.dart';
 
-class EmailAddress extends ValueObject<String>{
+class EmailAddress extends ValueObject<String> {
   final Either<ValueFalure<String>, String> value;
 
   factory EmailAddress(String value) {
@@ -15,7 +15,7 @@ class EmailAddress extends ValueObject<String>{
   const EmailAddress._(this.value);
 }
 
-class Password extends ValueObject<String>{
+class Password extends ValueObject<String> {
   final Either<ValueFalure<String>, String> value;
 
   factory Password(String value) {
