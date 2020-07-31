@@ -26,7 +26,14 @@ dependencies:
   dartz: ^0.9.0-dev.6
   freezed_annotation: ^0.7.1
   mockito: ^4.1.1
+
   flutter_bloc: ^6.0.1
+  
+  firebase_auth: ^0.16.1
+  
+  firebase_core: ^0.4.5
+  
+  google_sign_in: ^4.5.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

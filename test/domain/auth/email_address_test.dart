@@ -7,7 +7,7 @@ class EmailAddressMock extends Mock implements EmailAddress {}
 final email = EmailAddress('value');
 
 void main() {
-  final email = EmailAddress('endukokam@gmail.com');
+  final email = EmailAddress('endukokam@gmailcom');
 
   test('email validation ', () {
     String validornot = email.value.fold(

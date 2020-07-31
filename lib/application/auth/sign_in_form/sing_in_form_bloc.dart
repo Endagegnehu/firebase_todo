@@ -72,7 +72,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         isSubmitting: true,
         authFailureOrSuccess: none(),
       );
-      failureOrScusse = await _iAuthFacad.signInwithEmailandPassword(
+      failureOrScusse = await forwardedCall(
         emailAddress: state.emailAddress,
         password: state.password,
       );
