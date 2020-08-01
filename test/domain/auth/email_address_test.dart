@@ -2,6 +2,7 @@ import 'package:firebase_todo/domain/auth/value_object.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
+// ignore: must_be_immutable
 class EmailAddressMock extends Mock implements EmailAddress {}
 
 final email = EmailAddress('value');

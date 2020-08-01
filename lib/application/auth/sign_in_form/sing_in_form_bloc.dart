@@ -6,6 +6,7 @@ import 'package:firebase_todo/domain/auth/auth_failures.dart';
 import 'package:firebase_todo/domain/auth/i_auth_facad.dart';
 import 'package:firebase_todo/domain/auth/value_object.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
 part 'sing_in_form_event.dart';
@@ -13,6 +14,7 @@ part 'sing_in_form_state.dart';
 
 part 'sing_in_form_bloc.freezed.dart';
 
+@injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   final IAuthFacad _iAuthFacad;
 
