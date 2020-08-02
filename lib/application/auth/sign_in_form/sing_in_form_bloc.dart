@@ -38,14 +38,13 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         );
       },
       registerWithEmailAndPasswordPressed: (e) async* {
-        _performActionOnAuthFacadeWithEmailAndPassword(
+       yield* _performActionOnAuthFacadeWithEmailAndPassword(
           _iAuthFacad.registerwithEmailandPassword,
         );
       },
       signInWithEmailAndPasswordPressed: (e) async* {
-        _performActionOnAuthFacadeWithEmailAndPassword(
-          _iAuthFacad.signInwithEmailandPassword
-        );
+        yield* _performActionOnAuthFacadeWithEmailAndPassword(
+            _iAuthFacad.signInwithEmailandPassword);
       },
       signInWithGooglePressed: (e) async* {
         yield state.copyWith(
@@ -69,7 +68,10 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         forwardedCall,
   ) async* {
     Either<AuthFailure, Unit> failureOrScusse;
-    if (state.emailAddress.isValid() && state.password.isValid()) {
+    final isEmailValid = state.emailAddress.isValid();
+    final isPasswordValid = state.password.isValid();
+
+    if (isEmailValid && isPasswordValid) {
       yield state.copyWith(
         isSubmitting: true,
         authFailureOrSuccess: none(),
@@ -78,15 +80,11 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         emailAddress: state.emailAddress,
         password: state.password,
       );
-      yield state.copyWith(
-        isSubmitting: false,
-        authFailureOrSuccess: some(failureOrScusse),
-      );
-      yield state.copyWith(
-        isSubmitting: false,
-        showErrorMessages: true,
-        authFailureOrSuccess: optionOf(failureOrScusse),
-      );
     }
+    yield state.copyWith(
+      isSubmitting: false,
+      showErrorMessages: true,
+      authFailureOrSuccess: optionOf(failureOrScusse),
+    );
   }
 }
