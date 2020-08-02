@@ -1,4 +1,5 @@
 import 'package:firebase_todo/application/auth/sign_in_form/sing_in_form_bloc.dart';
+import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,7 +13,16 @@ class SignInForm extends StatelessWidget {
           () {},
           (ether) => ether.fold(
             (failure) {
-              
+              FlushbarHelper.createError(
+                message: failure.map(
+                  cancelledByUser: (_) => 'Cancelled',
+                  serverError: (_) => 'Server Error',
+                  emailAlreadyInUse: (_) =>
+                      'Sorry Email Address Is Already In Use',
+                  invalidEmailAndPasswordCombination: (_) =>
+                      'Invalid Email And Password Combination',
+                ),
+              ).show(context);
             },
             (r) => null,
           ),

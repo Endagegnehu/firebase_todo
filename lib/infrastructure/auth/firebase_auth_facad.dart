@@ -74,7 +74,7 @@ class FirebaseAuthFacad implements IAuthFacad {
           .signInWithCredential(authcridentials)
           .then((value) => right(unit));
     } on PlatformException catch (_) {
-      return left(const AuthFailure.serverError());
+      return left(const AuthFailure.cancelledByUser());
     }
   }
 }
