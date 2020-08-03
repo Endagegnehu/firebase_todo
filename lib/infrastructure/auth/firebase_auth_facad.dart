@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_todo/domain/auth/auth_failures.dart';
 import 'package:firebase_todo/domain/auth/i_auth_facad.dart';
+import 'package:firebase_todo/domain/auth/user.dart';
 import 'package:firebase_todo/domain/auth/value_object.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -76,5 +77,16 @@ class FirebaseAuthFacad implements IAuthFacad {
     } on PlatformException catch (_) {
       return left(const AuthFailure.cancelledByUser());
     }
+  }
+
+  @override
+  Future<Option<User>> getdignInUser() {
+    
+  }
+
+  @override
+  Future<void> signOut() {
+    // TODO: implement signOut
+    throw UnimplementedError();
   }
 }
